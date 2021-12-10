@@ -1,7 +1,103 @@
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "weatherAppBarTitle": "Weather",
+  "@weatherAppBarTitle": {
+    "description": "Text shown in the AppBar of the Weather Page."
+  },
+  "snowState": "Snow",
+  "@snowState": {
+    "description": "Text for the Snow Weather State."
+  },
+  "sleetState": "Sleet",
+  "@sleetState": {
+    "description": "Text for the Sleet Weather State."
+  },
+  "hailState": "Hail",
+  "@hailState": {
+    "description": "Text for the Hail Weather State."
+  },
+  "thunderstormState": "Thunderstorm",
+  "@thunderstormState": {
+    "description": "Text for the Thunderstorm Weather State."
+  },
+  "heavyRainState": "Heavy Rain",
+  "@heavyRainState": {
+    "description": "Text for the Heavy Rain Weather State."
+  },
+  "lightRainState": "Light Rain",
+  "@lightRainState": {
+    "description": "Text for the Light Rain Weather State."
+  },
+  "showersState": "Showers",
+  "@showersState": {
+    "description": "Text for the Showers Weather State."
+  },
+  "heavyCloudState": "Heavy Clouds",
+  "@heavyCloudState": {
+    "description": "Text for the Heavy Cloud Weather State."
+  },
+  "lightCloudState": "Light Clouds",
+  "@lightCloudState": {
+    "description": "Text for the Light Cloud Weather State."
+  },
+  "clearState": "Clear",
+  "@clearState": {
+    "description": "Text for the Clear Weather State."
+  },
+  "unknownState": "Unknown",
+  "@unknownState": {
+    "description": "Text for the Unknown Weather State."
+  },
+  "getStartedMessage": "Enter city name in search bar to get started.",
+  "@getStartedMessage": {
+    "description": "Text for the initial state."
+  },
+  "errorMessage": "There was an error while fetching the weather. Please try again later.",
+  "@errorMessage": {
+    "description": "Text for the failure state."
+  },
+  "errorSnackBar": "There was an error",
+  "@errorSnackBar": {
+    "description": "Text to show in SnackBar on failure."
+  },
+  "temperatureUnit": "Temperature Unit",
+  "@temperatureUnit": {
+    "description": "Label for the temperature unit selector."
+  },
+  "poweredByMetaweather": "Powered by\nmetaweather.com",
+  "@poweredByMetaweather": {
+    "description": "Powered by text."
+  },
+  "city": "City",
+  "@city": {
+    "description": "Hint for the SearchBar."
+  },
+  "enableLocationServicesTitle": "Location Services not enabled",
+  "@enableLocationServicesTitle": {
+    "description": "Title for the error dialog."
+  },
+  "enableLocationServicesMessage": "Please enable Location Services and try again.",
+  "@enableLocationServicesMessage": {
+    "description": "Message for the error dialog."
+  },
+  "enableLocationPermissionsTitle": "Enable Location Permission",
+  "@enableLocationPermissionsTitle": {
+    "description": "Title for the error dialog."
+  },
+  "enableLocationPermissionsMessage": "Please give us access to your location.",
+  "@enableLocationPermissionsMessage": {
+    "description": "Message for the error dialog."
+  },
+  "locationPermissionsDeniedTitle": "Location Permission Denied",
+  "@locationPermissionsDeniedTitle": {
+    "description": "Title for the error dialog."
+  },
+  "locationPermissionsDeniedMessage": "Location permission has been denied. Please enable it from your app's settings screen.",
+  "@locationPermissionsDeniedMessage": {
+    "description": "Message for the error dialog."
+  },
+  "okay": "OKAY",
+  "@okay": {
+    "description": "OKAY button text for dialogs."
+  }
 }

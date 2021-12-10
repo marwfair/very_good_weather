@@ -1,8 +1,36 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'weather.g.dart';
+
+enum WeatherState {
+  @JsonValue('sn')
+  snow,
+  @JsonValue('sl')
+  sleet,
+  @JsonValue('h')
+  hail,
+  @JsonValue('t')
+  thunderstorm,
+  @JsonValue('hr')
+  heavyRain,
+  @JsonValue('lr')
+  lightRain,
+  @JsonValue('s')
+  showers,
+  @JsonValue('hc')
+  heavyCloud,
+  @JsonValue('lc')
+  lightCloud,
+  @JsonValue('c')
+  clear,
+  unknown,
+}
+
+@JsonSerializable()
 class Weather {
   const Weather({
     required this.id,
-    required this.weatherStateName,
-    required this.weatherStateImageUrl,
+    required this.weatherState,
     required this.windDirectionCompass,
     required this.created,
     required this.applicableDate,
@@ -18,8 +46,9 @@ class Weather {
   });
 
   final int id;
-  final String weatherStateName;
-  final String weatherStateImageUrl;
+  @JsonKey(name: 'weather_state_abbr')
+  @JsonKey(unknownEnumValue: WeatherState.unknown)
+  final WeatherState weatherState;
   final String windDirectionCompass;
   final DateTime created;
   final DateTime applicableDate;
@@ -33,28 +62,6 @@ class Weather {
   final double visibility;
   final int predictability;
 
-  static fromJson(Map<String, dynamic> map) {
-    return Weather(
-      id: map['id'] as int,
-      weatherStateName: map['weather_state_name'] as String,
-      weatherStateImageUrl:
-          _createWeatherStateImageUrl(map['weather_state_abbr'] as String),
-      windDirectionCompass: map['wind_direction_compass'],
-      created: DateTime.parse(map['created'] as String),
-      applicableDate: DateTime.parse(map['applicable_date'] as String),
-      minTemp: map['min_temp'] as double,
-      maxTemp: map['max_temp'] as double,
-      theTemp: map['the_temp'] as double,
-      windSpeed: map['wind_speed'] as double,
-      windDirection: map['wind_direction'] as double,
-      airPressure: map['air_pressure'] as double,
-      humidity: map['humidity'] as int,
-      visibility: map['visibility'] as double,
-      predictability: map['predictability'] as int,
-    );
-  }
-
-  static String _createWeatherStateImageUrl(String weatherStateAbbr) {
-    return 'https://www.metaweather.com/static/img/weather/png/64/$weatherStateAbbr.png';
-  }
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
 }

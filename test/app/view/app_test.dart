@@ -7,13 +7,16 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:very_good_weather/app/app.dart';
-import 'package:very_good_weather/counter/counter.dart';
+import 'package:very_good_weather/weather/view/weather_page.dart';
+import 'package:weather_repository/weather_repository.dart';
 
 void main() {
   group('App', () {
-    testWidgets('renders CounterPage', (tester) async {
-      await tester.pumpWidget(const App());
-      expect(find.byType(CounterPage), findsOneWidget);
+    testWidgets('Renders WeatherPage', (tester) async {
+      await tester.pumpWidget(App(
+        weatherRepository: WeatherRepository(),
+      ));
+      expect(find.byType(WeatherPage), findsOneWidget);
     });
   });
 }

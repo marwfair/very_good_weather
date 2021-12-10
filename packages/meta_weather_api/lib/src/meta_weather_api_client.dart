@@ -16,6 +16,8 @@ class WeatherNotFoundException implements Exception {}
 /// Exception thrown when Weather request fails.
 class WeatherRequestException implements Exception {}
 
+/// Client to fetch weather and location information from metaweather.com.
+/// https://www.metaweather.com/api/
 class MetaWeatherApiClient {
   MetaWeatherApiClient({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();

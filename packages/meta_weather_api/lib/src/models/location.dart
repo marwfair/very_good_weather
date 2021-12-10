@@ -1,5 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'location.g.dart';
+
+@JsonSerializable()
 class Location extends Equatable {
   const Location({
     required this.title,
@@ -9,26 +13,15 @@ class Location extends Equatable {
   });
 
   final String title;
+  @JsonKey(name: 'location_type')
   final String locationType;
   final int woeid;
+  @JsonKey(name: 'latt_long')
+  @LatLngConverter()
   final LatLng latLng;
 
-  static fromJson(Map<String, dynamic> map) {
-    return Location(
-      title: map['title'] as String,
-      locationType: map['location_type'],
-      woeid: map['woeid'] as int,
-      latLng: _mapStringToLatLng(map['latt_long'] as String),
-    );
-  }
-
-  static LatLng _mapStringToLatLng(String input) {
-    final List<String> latLngArray = input.split(',');
-    return LatLng(
-      latitude: double.tryParse(latLngArray[0]) ?? 0,
-      longitude: double.tryParse(latLngArray[1]) ?? 0,
-    );
-  }
+  factory Location.fromJson(Map<String, dynamic> json) =>
+      _$LocationFromJson(json);
 
   @override
   List<Object?> get props => <Object?>[woeid];
@@ -45,4 +38,22 @@ class LatLng extends Equatable {
 
   @override
   List<Object?> get props => <Object?>[latitude, longitude];
+}
+
+class LatLngConverter implements JsonConverter<LatLng, String> {
+  const LatLngConverter();
+
+  @override
+  String toJson(LatLng latLng) {
+    return '${latLng.latitude},${latLng.longitude}';
+  }
+
+  @override
+  LatLng fromJson(String jsonString) {
+    final parts = jsonString.split(',');
+    return LatLng(
+      latitude: double.tryParse(parts[0]) ?? 0,
+      longitude: double.tryParse(parts[1]) ?? 0,
+    );
+  }
 }

@@ -17,11 +17,13 @@ void main() {
   group('WeatherRepository', () {
     setUp(() {
       mockMetaWeatherApiClient = MockMetaWeatherApiClient();
-      weatherRepository = WeatherRepository(mockMetaWeatherApiClient);
+      weatherRepository =
+          WeatherRepository(metaWeatherApiClient: mockMetaWeatherApiClient);
     });
 
     test('Verify initialized successfully.', () {
-      expect(WeatherRepository(mockMetaWeatherApiClient), isNotNull);
+      expect(WeatherRepository(metaWeatherApiClient: mockMetaWeatherApiClient),
+          isNotNull);
     });
 
     test('Call locationSearch.', () async {
@@ -49,9 +51,8 @@ void main() {
       when(() => weather.theTemp).thenReturn(76.0);
       when(() => weather.minTemp).thenReturn(44.0);
       when(() => weather.maxTemp).thenReturn(80.0);
-      when(() => weather.weatherStateName).thenReturn('Light Rain');
-      when(() => weather.weatherStateImageUrl).thenReturn(
-          'https://www.metaweather.com/static/img/weather/png/64/lr.png');
+      when(() => weather.weatherState)
+          .thenReturn(meta_weather_api.WeatherState.lightRain);
       when(() => weather.applicableDate).thenReturn(DateTime(2021, 12, 5));
 
       when(() => mockMetaWeatherApiClient.locationSearch('nashville'))
@@ -87,9 +88,8 @@ void main() {
       when(() => weather.theTemp).thenReturn(76.0);
       when(() => weather.minTemp).thenReturn(44.0);
       when(() => weather.maxTemp).thenReturn(80.0);
-      when(() => weather.weatherStateName).thenReturn('Light Rain');
-      when(() => weather.weatherStateImageUrl).thenReturn(
-          'https://www.metaweather.com/static/img/weather/png/64/lr.png');
+      when(() => weather.weatherState)
+          .thenReturn(meta_weather_api.WeatherState.lightRain);
       when(() => weather.applicableDate).thenReturn(DateTime(2021, 12, 5));
 
       when(() => mockMetaWeatherApiClient.latLngSearch(36.167839, -86.778160))

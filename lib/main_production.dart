@@ -5,9 +5,21 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:flutter/material.dart';
 import 'package:very_good_weather/app/app.dart';
 import 'package:very_good_weather/bootstrap.dart';
+import 'package:weather_repository/weather_repository.dart';
 
 void main() {
-  bootstrap(() => const App());
+  bootstrap(
+    () => App(
+      weatherRepository: WeatherRepository(),
+      themeData: ThemeData(
+        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: const Color(0xFF13B9FF),
+        ),
+      ),
+    ),
+  );
 }
