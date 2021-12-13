@@ -53,5 +53,7 @@
       <string>https</string>
       <string>http</string>
     </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Very Good Weather needs access to your location.</string>
 </dict>
 </plist>

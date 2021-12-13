@@ -32,7 +32,7 @@ void main() {
       ),
     );
 
-    testWidgets('RenderW WeatherForecast', (tester) async {
+    testWidgets('Render WeatherForecast', (tester) async {
       when(() => mockWeatherCubit.state).thenReturn(const WeatherState());
       await tester.pumpApp(
         BlocProvider<WeatherCubit>.value(

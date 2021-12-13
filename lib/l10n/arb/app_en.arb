@@ -96,8 +96,12 @@
   "@locationPermissionsDeniedMessage": {
     "description": "Message for the error dialog."
   },
-  "okay": "OKAY",
-  "@okay": {
-    "description": "OKAY button text for dialogs."
+  "dialogLocationSettings": "LOCATION SETTINGS",
+  "@dialogLocationSettings": {
+    "description": "Location settings text for dialog action."
+  },
+  "dialogAppSettings": "APP SETTINGS",
+  "@dialogAppSettings": {
+    "description": "App settings text for dialog action."
   }
 }

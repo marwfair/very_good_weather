@@ -34,8 +34,7 @@ class TemperatureUnitSelectorState extends State<TemperatureUnitSelector> {
 
   Widget _createButton(String label, bool selected) {
     return IgnorePointer(
-      ignoring: context.read<WeatherCubit>().state.temperatureUnits ==
-          TemperatureUnits.celsius,
+      ignoring: selected,
       child: TextButton(
         onPressed: () {
           setState(() {
