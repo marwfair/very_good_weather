@@ -5,6 +5,8 @@ import 'package:very_good_weather/weather/models/weather.dart';
 import 'package:very_good_weather/weather/widgets/current_weather.dart';
 import 'package:very_good_weather/weather/widgets/weather_list_item.dart';
 
+/// Parent widget for displaying the current weather as well as the the forecast
+/// for the next few days.
 class WeatherForecast extends StatelessWidget {
   const WeatherForecast({
     Key? key,

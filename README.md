@@ -35,7 +35,7 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*Very Good Weather works on iOS, Android, and Web._
+_\*Very Good Weather has been testing and works on Android and iOS._
 
 ---
 

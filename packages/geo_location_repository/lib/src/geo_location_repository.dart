@@ -9,6 +9,9 @@ enum LocationPermissionStatus {
   unknown,
 }
 
+/// Simple repository for accessing GeolocatorAPI to get the user's location,
+/// requesting location permissions, and for opening the settings in-app
+/// settings screen.
 class GeoLocationRepository {
   const GeoLocationRepository(
       {this.geolocatorApiClient = const geolocator_api.GeolocatorApiClient()});

@@ -6,7 +6,7 @@ import 'package:very_good_weather/weather/models/weather.dart';
 import 'package:very_good_weather/weather/widgets/weather_condition_image.dart';
 import 'package:very_good_weather/weather/widgets/weather_condition_label.dart';
 
-/// Widget to display the given [weather].
+/// Widget to display the given [weather] for header-type view.
 class CurrentWeather extends StatelessWidget {
   const CurrentWeather({
     Key? key,
