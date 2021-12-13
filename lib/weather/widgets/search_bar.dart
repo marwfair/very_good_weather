@@ -29,7 +29,7 @@ class SearchBarState extends State<SearchBar> {
     return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (BuildContext context, WeatherState state) {
         final location =
-        state.forecast.isNotEmpty ? state.forecast.first.location : null;
+            state.forecast.isNotEmpty ? state.forecast.first.location : null;
         _controller.text = location ?? '';
 
         return TextField(
