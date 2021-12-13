@@ -176,27 +176,30 @@ void main() {
     blocTest<WeatherCubit, WeatherState>(
       'Successfully refresh weather',
       seed: () {
-        return WeatherState(status: WeatherStatus.success, forecast: <Weather>[
-          Weather(
-            condition: weather_repository.WeatherCondition.clear,
-            temp: 15,
-            minTemp: 10,
-            maxTemp: 20,
-            applicableDate: DateTime(
-              2021,
-              12,
-              9,
+        return WeatherState(
+          status: WeatherStatus.success,
+          forecast: <Weather>[
+            Weather(
+              condition: weather_repository.WeatherCondition.clear,
+              temp: 15,
+              minTemp: 10,
+              maxTemp: 20,
+              applicableDate: DateTime(
+                2021,
+                12,
+                9,
+              ),
+              location: 'Nashville',
+              woeid: 2457170,
+              updatedDate: DateTime(
+                2021,
+                21,
+                9,
+                12,
+              ),
             ),
-            location: 'Nashville',
-            woeid: 2457170,
-            updatedDate: DateTime(
-              2021,
-              21,
-              9,
-              12,
-            ),
-          ),
-        ]);
+          ],
+        );
       },
       build: () => mockHydratedStorage(
         () => WeatherCubit(

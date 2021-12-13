@@ -57,34 +57,6 @@ void main() {
       expect(find.byType(SearchBar), findsOneWidget);
     });
 
-    testWidgets('Tap GPS icon', (tester) async {
-      when(mockGeoLocationRepository.requestLocationPermission).thenAnswer(
-        (_) async => LocationPermissionStatus.locationServicesDisabled,
-      );
-
-      await tester.pumpApp(
-        MultiBlocProvider(
-          providers: [
-            BlocProvider<WeatherCubit>.value(
-              value: mockWeatherCubit,
-            ),
-            BlocProvider<PermissionsCubit>.value(
-              value: PermissionsCubit(mockGeoLocationRepository),
-            ),
-          ],
-          child: const WeatherPage(),
-        ),
-      );
-
-      await tester.tap(
-        find.byKey(
-          const Key('key_gps_button'),
-        ),
-      );
-
-      verify(mockGeoLocationRepository.requestLocationPermission).called(1);
-    });
-
     testWidgets('Submit search query', (tester) async {
       await mockHydratedStorage(() async {
         await tester.pumpApp(

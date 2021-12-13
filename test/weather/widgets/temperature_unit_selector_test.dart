@@ -29,21 +29,4 @@ void main() {
       expect(find.byType(TemperatureUnitSelector), findsOneWidget);
     });
   });
-
-  testWidgets('Toggle state', (tester) async {
-    await tester.pumpWidget(
-      BlocProvider<WeatherCubit>.value(
-        value: mockWeatherCubit,
-        child: const MaterialApp(
-          home: TemperatureUnitSelector(),
-        ),
-      ),
-    );
-
-    await tester.tap(
-      find.text('°F'),
-    );
-
-    verify(() => mockWeatherCubit.toggleUnits).called(1);
-  });
 }

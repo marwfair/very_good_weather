@@ -60,8 +60,9 @@ class MetaWeatherApiClient {
       throw LocationNotFoundException();
     }
 
-    return List<Location>.from(
-        locationJson.map((json) => Location.fromJson(json)).toList());
+    return List<Location>.from(locationJson
+        .map((dynamic json) => Location.fromJson(json as Map<String, dynamic>))
+        .toList());
   }
 
   Future<List<Weather>> getWeather(int woeid) async {
@@ -91,7 +92,8 @@ class MetaWeatherApiClient {
       throw WeatherNotFoundException();
     }
 
-    return List<Weather>.from(
-        consolidatedWeatherList.map((json) => Weather.fromJson(json)).toList());
+    return List<Weather>.from(consolidatedWeatherList
+        .map((dynamic json) => Weather.fromJson(json as Map<String, dynamic>))
+        .toList());
   }
 }
