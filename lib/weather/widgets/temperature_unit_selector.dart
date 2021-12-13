@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:very_good_weather/weather/cubit/weather_cubit.dart';
 import 'package:very_good_weather/weather/models/weather.dart';
+import 'package:very_good_weather/weather/widgets/unit_selector_button.dart';
 
 /// Toggle to choose between Fahrenheit and Celsius.
 class TemperatureUnitSelector extends StatefulWidget {
@@ -17,36 +18,29 @@ class TemperatureUnitSelectorState extends State<TemperatureUnitSelector> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        _createButton(
-          '°F',
-          context.read<WeatherCubit>().state.temperatureUnits ==
-              TemperatureUnits.fahrenheit,
-        ),
+        UnitSelectorButton(
+            label: '°F',
+            selected: context.read<WeatherCubit>().state.temperatureUnits ==
+                TemperatureUnits.fahrenheit,
+            onPressed: () {
+              setState(() {
+                context.read<WeatherCubit>().toggleUnits();
+              });
+            }),
         const SizedBox(width: 10),
-        _createButton(
-          '°C',
-          context.read<WeatherCubit>().state.temperatureUnits ==
+        UnitSelectorButton(
+          label: '°C',
+          selected: context.read<WeatherCubit>().state.temperatureUnits ==
               TemperatureUnits.celsius,
+          onPressed: () {
+            setState(
+              () {
+                context.read<WeatherCubit>().toggleUnits();
+              },
+            );
+          },
         ),
       ],
-    );
-  }
-
-  Widget _createButton(String label, bool selected) {
-    return IgnorePointer(
-      ignoring: selected,
-      child: TextButton(
-        onPressed: () {
-          setState(() {
-            context.read<WeatherCubit>().toggleUnits();
-          });
-        },
-        style: TextButton.styleFrom(
-          side: const BorderSide(color: Colors.black12, width: 2),
-          backgroundColor: selected ? Colors.grey : Colors.white,
-        ),
-        child: Text(label),
-      ),
     );
   }
 }
