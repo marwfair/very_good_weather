@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:geo_location_repository/geo_location_repository.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:very_good_weather/weather/models/weather.dart';
@@ -10,9 +11,13 @@ part 'weather_cubit.g.dart';
 part 'weather_state.dart';
 
 class WeatherCubit extends HydratedCubit<WeatherState> {
-  WeatherCubit(this._weatherRepository) : super(const WeatherState());
+  WeatherCubit(
+    this._weatherRepository,
+    this._geoLocationRepository,
+  ) : super(const WeatherState());
 
   final weather_repository.WeatherRepository _weatherRepository;
+  final GeoLocationRepository _geoLocationRepository;
 
   Future<void> fetchWeatherFromQuery(String? query) async {
     if (query == null || query.isEmpty) return;
@@ -179,6 +184,21 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
             .toList(),
       ),
     );
+  }
+
+  Future<void> getUserLocation() async {
+    try {
+      emit(state.copyWith(status: WeatherStatus.loading));
+
+      final userLocation = await _geoLocationRepository.getUserLocation();
+
+      await fetchWeatherFromLocation(
+        userLocation.latitude,
+        userLocation.longitude,
+      );
+    } catch (e) {
+      emit(state.copyWith(status: WeatherStatus.failure));
+    }
   }
 
   @override

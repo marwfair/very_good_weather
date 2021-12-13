@@ -273,8 +273,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  geolocator:
+  geo_location_repository:
     dependency: "direct main"
+    description:
+      path: "packages/geo_location_repository"
+      relative: true
+    source: path
+    version: "0.0.1"
+  geolocator:
+    dependency: transitive
     description:
       name: geolocator
       url: "https://pub.dartlang.org"
@@ -287,6 +294,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0+4"
+  geolocator_api:
+    dependency: transitive
+    description:
+      path: "packages/geolocator_api"
+      relative: true
+    source: path
+    version: "0.0.1"
   geolocator_apple:
     dependency: transitive
     description:
@@ -795,7 +809,7 @@ packages:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   very_good_analysis:
     dependency: "direct dev"
     description:

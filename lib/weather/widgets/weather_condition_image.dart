@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:weather_repository/weather_repository.dart';
 
+/// Widget for displaying the correct SVG asset for the [weatherCondition].
 class WeatherConditionImage extends StatelessWidget {
   const WeatherConditionImage({
     Key? key,

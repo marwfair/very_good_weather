@@ -11,42 +11,40 @@ class WeatherRepository {
 
   Future<List<Weather>> getWeatherFromQuery(String query) async {
     final List<Location> locations =
-    await _metaWeatherApiClient.locationSearch(query);
+        await _metaWeatherApiClient.locationSearch(query);
 
     return List.from(
         (await _metaWeatherApiClient.getWeather(locations.first.woeid))
-            .map((apiWeather) =>
-            Weather(
-              apiWeather.id,
-              apiWeather.weatherState.toCondition,
-              apiWeather.minTemp,
-              apiWeather.maxTemp,
-              apiWeather.theTemp,
-              apiWeather.applicableDate,
-              locations.first.title,
-              locations.first.woeid,
-            ))
+            .map((apiWeather) => Weather(
+                  apiWeather.id,
+                  apiWeather.weatherState.toCondition,
+                  apiWeather.minTemp,
+                  apiWeather.maxTemp,
+                  apiWeather.theTemp,
+                  apiWeather.applicableDate,
+                  locations.first.title,
+                  locations.first.woeid,
+                ))
             .toList());
   }
 
-  Future<List<Weather>> getWeatherFromLocation(double latitude,
-      double longitude) async {
+  Future<List<Weather>> getWeatherFromLocation(
+      double latitude, double longitude) async {
     final List<Location> locations =
-    await _metaWeatherApiClient.latLngSearch(latitude, longitude);
+        await _metaWeatherApiClient.latLngSearch(latitude, longitude);
 
     return List.from(
         (await _metaWeatherApiClient.getWeather(locations.first.woeid))
-            .map((apiWeather) =>
-            Weather(
-              apiWeather.id,
-              apiWeather.weatherState.toCondition,
-              apiWeather.minTemp,
-              apiWeather.maxTemp,
-              apiWeather.theTemp,
-              apiWeather.applicableDate,
-              locations.first.title,
-              locations.first.woeid,
-            ))
+            .map((apiWeather) => Weather(
+                  apiWeather.id,
+                  apiWeather.weatherState.toCondition,
+                  apiWeather.minTemp,
+                  apiWeather.maxTemp,
+                  apiWeather.theTemp,
+                  apiWeather.applicableDate,
+                  locations.first.title,
+                  locations.first.woeid,
+                ))
             .toList());
   }
 }
