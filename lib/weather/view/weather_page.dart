@@ -89,6 +89,7 @@ class WeatherPageState extends State<WeatherPage> {
                 context: context,
                 builder: (BuildContext dialogContext) {
                   return AlertDialog(
+                    key: Key('key_enable_location_services_dialog'),
                     title: Text(
                       context.l10n.enableLocationServicesTitle,
                     ),
@@ -114,6 +115,7 @@ class WeatherPageState extends State<WeatherPage> {
                 context: context,
                 builder: (BuildContext dialogContext) {
                   return AlertDialog(
+                    key: Key('key_permission_denied_dialog'),
                     title: Text(
                       context.l10n.enableLocationPermissionsTitle,
                     ),
@@ -139,6 +141,7 @@ class WeatherPageState extends State<WeatherPage> {
                 context: context,
                 builder: (BuildContext dialogContext) {
                   return AlertDialog(
+                    key: Key('key_permission_permanently_denied_dialog'),
                     title: Text(
                       context.l10n.locationPermissionsDeniedTitle,
                     ),
@@ -182,6 +185,7 @@ class WeatherPageState extends State<WeatherPage> {
                       child: Text(
                         context.l10n.getStartedMessage,
                         textAlign: TextAlign.center,
+                        key: Key('key_getting_started_text'),
                       ),
                     ),
                   );
@@ -194,7 +198,10 @@ class WeatherPageState extends State<WeatherPage> {
                     return Center(
                       child: Padding(
                         padding: const EdgeInsets.all(40),
-                        child: Text(context.l10n.errorMessage),
+                        child: Text(
+                          context.l10n.errorMessage,
+                          key: Key('key_error_text'),
+                        ),
                       ),
                     );
                   } else {
