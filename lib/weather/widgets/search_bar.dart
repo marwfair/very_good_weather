@@ -27,6 +27,9 @@ class SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WeatherCubit, WeatherState>(
+      buildWhen: (WeatherState previousState, WeatherState currentState) {
+        return currentState.status != WeatherStatus.loading;
+      },
       builder: (BuildContext context, WeatherState state) {
         final location =
             state.forecast.isNotEmpty ? state.forecast.first.location : null;

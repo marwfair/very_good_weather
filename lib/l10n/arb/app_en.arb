@@ -48,7 +48,7 @@
   "@unknownState": {
     "description": "Text for the Unknown Weather State."
   },
-  "getStartedMessage": "Enter city name in search bar to get started.",
+  "getStartedMessage": "Enter city name or select the GPS icon in search bar to get started.",
   "@getStartedMessage": {
     "description": "Text for the initial state."
   },

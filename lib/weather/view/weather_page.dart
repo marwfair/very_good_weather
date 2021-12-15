@@ -10,8 +10,22 @@ import 'package:very_good_weather/weather/widgets/search_bar.dart';
 import 'package:very_good_weather/weather/widgets/temperature_unit_selector.dart';
 import 'package:very_good_weather/weather/widgets/weather_forecast.dart';
 
-class WeatherPage extends StatelessWidget {
+class WeatherPage extends StatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
+
+  @override
+  WeatherPageState createState() => WeatherPageState();
+}
+
+class WeatherPageState extends State<WeatherPage> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (context.read<WeatherCubit>().state.status == WeatherStatus.success) {
+      context.read<WeatherCubit>().refreshWeather();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +177,13 @@ class WeatherPage extends StatelessWidget {
               switch (state.status) {
                 case WeatherStatus.initial:
                   return Center(
-                    child: Text(context.l10n.getStartedMessage),
+                    child: Padding(
+                      padding: const EdgeInsets.all(40),
+                      child: Text(
+                        context.l10n.getStartedMessage,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   );
                 case WeatherStatus.loading:
                   return const Center(child: CircularProgressIndicator());
@@ -172,7 +192,10 @@ class WeatherPage extends StatelessWidget {
                 case WeatherStatus.failure:
                   if (state.forecast.isEmpty) {
                     return Center(
-                      child: Text(context.l10n.errorMessage),
+                      child: Padding(
+                        padding: const EdgeInsets.all(40),
+                        child: Text(context.l10n.errorMessage),
+                      ),
                     );
                   } else {
                     return WeatherForecast(forecast: state.forecast);
