@@ -22,7 +22,7 @@ class WeatherPageState extends State<WeatherPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    if (context.read<WeatherCubit>().state.status == WeatherStatus.success) {
+    if (context.read<WeatherCubit>().state.forecast.isNotEmpty) {
       context.read<WeatherCubit>().refreshWeather();
     }
   }
@@ -200,6 +200,7 @@ class WeatherPageState extends State<WeatherPage> {
                         padding: const EdgeInsets.all(40),
                         child: Text(
                           context.l10n.errorMessage,
+                          textAlign: TextAlign.center,
                           key: Key('key_error_text'),
                         ),
                       ),

@@ -6,7 +6,10 @@ class GeolocatorWrapper {
 
   Future<Position> getCurrentPosition() async {
     try {
-      return await Geolocator.getCurrentPosition();
+      return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low,
+        timeLimit: Duration(seconds: 10),
+      );
     } catch (e) {
       rethrow;
     }
