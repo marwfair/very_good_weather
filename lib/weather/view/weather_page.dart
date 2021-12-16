@@ -200,6 +200,7 @@ class WeatherPageState extends State<WeatherPage> {
                         padding: const EdgeInsets.all(40),
                         child: Text(
                           context.l10n.errorMessage,
+                          textAlign: TextAlign.center,
                           key: Key('key_error_text'),
                         ),
                       ),
