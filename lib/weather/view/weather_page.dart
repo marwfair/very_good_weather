@@ -22,7 +22,9 @@ class WeatherPageState extends State<WeatherPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    context.read<WeatherCubit>().refreshWeather();
+    if (context.read<WeatherCubit>().state.forecast.isNotEmpty) {
+      context.read<WeatherCubit>().refreshWeather();
+    }
   }
 
   @override
