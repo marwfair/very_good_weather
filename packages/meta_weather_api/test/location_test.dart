@@ -38,6 +38,30 @@ void main() {
           ),
         );
       });
+
+      test('Checks if Locations are the same.', () {
+        final Location location1 = Location.fromJson(const <String, dynamic>{
+          'title': 'Nashville',
+          'location_type': 'City',
+          'latt_long': '36.167839,-86.778160',
+          'woeid': 2457170
+        });
+
+        final Location location2 = Location.fromJson(const <String, dynamic>{
+          'title': 'Nashville',
+          'location_type': 'City',
+          'latt_long': '36.167839,-86.778160',
+          'woeid': 2457170
+        });
+
+        expect(location1, location2);
+      });
+
+      test('Create json from LatLng', () {
+        final LatLng latLng =
+            LatLng(latitude: 36.167839, longitude: -86.778160);
+        expect(LatLngConverter().toJson(latLng), '36.167839,-86.77816');
+      });
     });
   });
 }

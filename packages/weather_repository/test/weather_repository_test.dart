@@ -26,6 +26,10 @@ void main() {
           isNotNull);
     });
 
+    test('Verify initialized successfully with default client.', () {
+      expect(WeatherRepository(), isNotNull);
+    });
+
     test('Call locationSearch.', () async {
       const String city = 'nashville';
       try {
@@ -52,7 +56,7 @@ void main() {
       when(() => weather.minTemp).thenReturn(44.0);
       when(() => weather.maxTemp).thenReturn(80.0);
       when(() => weather.weatherState)
-          .thenReturn(meta_weather_api.WeatherState.lightRain);
+          .thenReturn(meta_weather_api.WeatherState.clear);
       when(() => weather.applicableDate).thenReturn(DateTime(2021, 12, 5));
 
       when(() => mockMetaWeatherApiClient.locationSearch('nashville'))
@@ -89,7 +93,7 @@ void main() {
       when(() => weather.minTemp).thenReturn(44.0);
       when(() => weather.maxTemp).thenReturn(80.0);
       when(() => weather.weatherState)
-          .thenReturn(meta_weather_api.WeatherState.lightRain);
+          .thenReturn(meta_weather_api.WeatherState.showers);
       when(() => weather.applicableDate).thenReturn(DateTime(2021, 12, 5));
 
       when(() => mockMetaWeatherApiClient.latLngSearch(36.167839, -86.778160))
